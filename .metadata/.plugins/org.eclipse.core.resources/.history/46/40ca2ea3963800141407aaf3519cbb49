@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Force_Calculator_Main {
+
+	public static void main(String[] args) {
+		double Force = 0;
+		Scanner reader = new Scanner(System.in);
+		System.out.println("Mass = ");
+		double mass = reader.nextDouble();
+		System.out.println("Radius = ");
+		double radius = reader.nextDouble();
+		System.out.println("Time = ");
+		double time = reader.nextDouble();
+		System.out.println("Revolutions = ");
+		double revolutions = reader.nextDouble();
+		Force = ((0.5 *mass* radius*radius) * (((revolutions) * (2*Math.PI)/time))/radius);
+		System.out.println(Force);
+		System.out.println("Torque" + (0.5 *mass* radius*radius)/mass );
+	}
+
+}

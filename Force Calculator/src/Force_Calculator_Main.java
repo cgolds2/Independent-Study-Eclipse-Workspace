@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Force_Calculator_Main {
+
+
+	public static void main(String[] args) {
+		double Force = 0;
+		
+		@SuppressWarnings("resource")
+		Scanner reader = new Scanner(System.in);
+		
+		
+		System.out.println("Mass (kg) = ");
+		double mass = reader.nextDouble();
+		System.out.println("Radius (m) = ");
+		double radius = reader.nextDouble();
+		System.out.println("Time (sec) = ");
+		double time = reader.nextDouble();
+		System.out.println("Revolutions = ");
+		double revolutions = reader.nextDouble();
+		//gets all variables from user
+		
+		double l = 0.5 * mass * radius * radius;
+		//finds moment of inertia 
+		double a = (revolutions * 2 * Math.PI)/time ;
+		//finds angular acceleration 
+		double t = l * a;
+		//finds torque 
+		Force = t / radius;
+		//finds force 
+		
+		
+		System.out.println("The Torque is" + t + " N*m");
+		System.out.println("The force required = " + Force + " N");
+		//prints to console 
+	}
+
+}

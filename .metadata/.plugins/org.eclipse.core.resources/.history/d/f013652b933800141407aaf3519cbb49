@@ -1,0 +1,14 @@
+import java.util.Scanner;
+import java.math;
+
+public class Force_Calculator_Main {
+
+	public static void main(String[] args) {
+		Scanner reader = new Scanner(System.in);
+		double mass = reader.nextDouble();
+		double radius = reader.nextDouble();
+		double time = reader.nextDouble();
+		double revolutions = reader.nextDouble();
+	}
+
+}
