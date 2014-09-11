@@ -30,7 +30,7 @@ public class Force_Calculator_Main {
 		//finds force 
 		
 		
-		System.out.println("The Torque is" + t + " N*m");
+		System.out.println("The Torque is " + t + " N*m");
 		System.out.println("The force required = " + Force + " N");
 		//prints to console 
 	}

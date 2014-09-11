@@ -1,0 +1,129 @@
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+
+import java.util.Scanner;
+
+public class Force_GUI_Test_Main {
+
+	protected Shell shell;
+	private Text mass;
+	private Text radius;
+	private Text time;
+	private Text rotations;
+
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		try {
+			Force_GUI_Test_Main window = new Force_GUI_Test_Main();
+			window.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Open the window.
+	 */
+	public void open() {
+		Display display = Display.getDefault();
+		createContents();
+		shell.open();
+		shell.layout();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+
+	/**
+	 * Create contents of the window.
+	 */
+	protected void createContents() {
+		shell = new Shell();
+		shell.setSize(450, 300);
+		shell.setText("Force Calculator");
+		
+		mass = new Text(shell, SWT.BORDER);
+		mass.setBounds(40, 87, 76, 21);
+		
+		Label lblMass = new Label(shell, SWT.NONE);
+		lblMass.setAlignment(SWT.CENTER);
+		lblMass.setBounds(40, 69, 76, 15);
+		lblMass.setText("Mass");
+		
+		final Label lblTorque = new Label(shell, SWT.NONE);
+		lblTorque.setBounds(40, 206, 55, 15);
+		lblTorque.setText("Torque = ");
+		
+		final Label lblForce = new Label(shell, SWT.NONE);
+		lblForce.setBounds(40, 237, 55, 15);
+		lblForce.setText("Force = ");
+		radius = new Text(shell, SWT.BORDER);
+		radius.setBounds(122, 87, 76, 21);
+		
+		time = new Text(shell, SWT.BORDER);
+		time.setBounds(204, 87, 76, 21);
+		
+		rotations = new Text(shell, SWT.BORDER);
+		rotations.setBounds(286, 87, 76, 21);
+		
+		Label lblTime = new Label(shell, SWT.NONE);
+		lblTime.setAlignment(SWT.CENTER);
+		lblTime.setBounds(204, 69, 76, 15);
+		lblTime.setText("Time");
+		
+		Label lblRotations = new Label(shell, SWT.NONE);
+		lblRotations.setAlignment(SWT.CENTER);
+		lblRotations.setBounds(286, 69, 76, 15);
+		lblRotations.setText("Rotations");
+		
+		Label lblRadius = new Label(shell, SWT.NONE);
+		lblRadius.setAlignment(SWT.CENTER);
+		lblRadius.setBounds(122, 69, 76, 15);
+		lblRadius.setText("Radius");
+		
+		Button btnButton = new Button(shell, SWT.NONE);
+		btnButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				System.out.println("Mass (kg) = ");
+				double mass = mass;
+				System.out.println("Radius (m) = ");
+				double radius = reader.nextDouble();
+				System.out.println("Time (sec) = ");
+				double time = reader.nextDouble();
+				System.out.println("Revolutions = ");
+				double revolutions = reader.nextDouble();
+				//gets all variables from user
+				
+				double l = 0.5 * mass * radius * radius;
+				//finds moment of inertia 
+				double a = (revolutions * 2 * Math.PI)/time ;
+				//finds angular acceleration 
+				double t = l * a;
+				//finds torque 
+				double Force = t / radius;
+				//finds force 
+				
+				lblForce.setText("Force = " + Force); 
+				lblTorque.setText("Torque = " + t);
+
+			}
+		});
+		btnButton.setBounds(40, 113, 322, 63);
+		btnButton.setText("Calculate");
+		
+
+	}
+}

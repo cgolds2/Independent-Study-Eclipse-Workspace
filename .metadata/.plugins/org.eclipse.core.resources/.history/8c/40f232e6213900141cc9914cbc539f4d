@@ -1,0 +1,90 @@
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Button;
+
+
+public class Force_GUI_Test_Main {
+
+	protected Shell shell;
+	private Text mass;
+	private Text radius;
+	private Text time;
+	private Text rotations;
+
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		try {
+			Force_GUI_Test_Main window = new Force_GUI_Test_Main();
+			window.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Open the window.
+	 */
+	public void open() {
+		Display display = Display.getDefault();
+		createContents();
+		shell.open();
+		shell.layout();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+
+	/**
+	 * Create contents of the window.
+	 */
+	protected void createContents() {
+		shell = new Shell();
+		shell.setSize(450, 300);
+		shell.setText("Force Calculator");
+		
+		mass = new Text(shell, SWT.BORDER);
+		mass.setBounds(40, 87, 76, 21);
+		
+		Label lblMass = new Label(shell, SWT.NONE);
+		lblMass.setAlignment(SWT.CENTER);
+		lblMass.setBounds(40, 69, 76, 15);
+		lblMass.setText("Mass");
+		
+		radius = new Text(shell, SWT.BORDER);
+		radius.setBounds(122, 87, 76, 21);
+		
+		time = new Text(shell, SWT.BORDER);
+		time.setBounds(204, 87, 76, 21);
+		
+		rotations = new Text(shell, SWT.BORDER);
+		rotations.setBounds(286, 87, 76, 21);
+		
+		Label lblTime = new Label(shell, SWT.NONE);
+		lblTime.setAlignment(SWT.CENTER);
+		lblTime.setBounds(204, 69, 76, 15);
+		lblTime.setText("Time");
+		
+		Label lblRotations = new Label(shell, SWT.NONE);
+		lblRotations.setAlignment(SWT.CENTER);
+		lblRotations.setBounds(286, 69, 76, 15);
+		lblRotations.setText("Rotations");
+		
+		Label lblRadius = new Label(shell, SWT.NONE);
+		lblRadius.setAlignment(SWT.CENTER);
+		lblRadius.setBounds(122, 69, 76, 15);
+		lblRadius.setText("Radius");
+		
+		Button btnButton = new Button(shell, SWT.NONE);
+		btnButton.setBounds(40, 113, 322, 63);
+		btnButton.setText("Calculate");
+
+	}
+}
